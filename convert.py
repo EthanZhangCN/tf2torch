@@ -62,5 +62,5 @@ for i,key in enumerate(state_dict.keys()):
 
 torch.save(state_dict,'vgg16_from_tf_notop.pth')
 
-# pdb.set_trace()
+pdb.set_trace()
 
