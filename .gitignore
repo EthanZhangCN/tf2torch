@@ -1,3 +1,4 @@
 # Specify filepatterns you want git to ignore.
 *.pth
 *.h5
+__pycache__/*

@@ -8,8 +8,8 @@ import pdb
 
 # pytorch model
 torch_dic = "vgg16-397923af.pth"
-torch_model =torch.load(torch_dic)
-print(torch_model.keys())
+state_dict =torch.load(torch_dic)
+print(state_dict.keys())
 
 
 #tf model
@@ -42,9 +42,9 @@ rm_keys = [ 'classifier.0.weight',
 
 
 for i in range(6):
-    torch_model.pop(rm_keys[i])
+    state_dict.pop(rm_keys[i])
 
-for i,key in enumerate(torch_model.keys()):
+for i,key in enumerate(state_dict.keys()):
     k = int(i/2)
 
     tf_weights = tf_model.layers[[l.name==tflayers_name[k] for l in tf_model.layers].index(True)].get_weights()
@@ -58,9 +58,9 @@ for i,key in enumerate(torch_model.keys()):
         tf_weights = np.swapaxes(tf_weights,1,-2)
 
     print(k,":",key)
-    torch_model[key] = torch.Tensor(tf_weights)
+    state_dict[key] = torch.Tensor(tf_weights)
 
-torch.save(torch_model,'vgg16_from_tf_notop.pth')
+torch.save(state_dict,'vgg16_from_tf_notop.pth')
 
 # pdb.set_trace()
 

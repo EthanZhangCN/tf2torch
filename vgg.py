@@ -159,7 +159,7 @@ def vgg13_bn(pretrained: bool = False, progress: bool = True, **kwargs: Any) -> 
     return _vgg('vgg13_bn', 'B', True, pretrained, progress, **kwargs)
 
 
-def vgg16(url:str = None ,pretrained: bool = False, progress: bool = True, **kwargs: Any) -> VGG:
+def vgg16(pretrained: bool = False, progress: bool = True, **kwargs: Any) -> VGG:
     r"""VGG 16-layer model (configuration "D")
     `"Very Deep Convolutional Networks For Large-Scale Image Recognition" <https://arxiv.org/pdf/1409.1556.pdf>`_.
     The required minimum input size of the model is 32x32.
@@ -168,11 +168,7 @@ def vgg16(url:str = None ,pretrained: bool = False, progress: bool = True, **kwa
         pretrained (bool): If True, returns a model pre-trained on ImageNet
         progress (bool): If True, displays a progress bar of the download to stderr
     """
-    if url is None:
-        arch = 'vgg16'
-    else:
-        arch = url
-    return _vgg(arch, 'D', False, pretrained, progress, **kwargs)
+    return _vgg('vgg16', 'D', False, pretrained, progress, **kwargs)
 
 
 def vgg16_bn(pretrained: bool = False, progress: bool = True, **kwargs: Any) -> VGG:
